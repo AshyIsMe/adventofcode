@@ -50,9 +50,7 @@ d2p1=: +/scores
 
 NB. day 2 part 2
 NB. X lose, Y draw, Z win
-
 scores=: ". (}."1 s2) rplc ;/'X0Y3Z6'
-
 NB. A1, B2, C3
 hands=: ". }: (LF;';') rplc~  0 : 0
 'A X';'3'
@@ -65,7 +63,25 @@ hands=: ". }: (LF;';') rplc~  0 : 0
 'C Y';'3'
 'C Z';'1'
 )
-
 points =: ". _1 ,\ s2 rplc hands
-
 d2p2=: +/ scores + points
+
+
+NB. day3  ---------------------------------------------------
+
+
+s3 =: 0 : 0
+vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw
+)
+s3 =: (LF=s3) < ;._2 s3
+
+rucksacks =: (-:@# split ]) &> s3
+dups =: ([: ([: ~. e./ # {.) [: > -:@# split ]) &> s3
+alphabet =: a. {~ (96+i.27),(65+i.26)
+
+d3p1=: +/ alphabet i. dups
